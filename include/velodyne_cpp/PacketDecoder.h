@@ -5,9 +5,9 @@
 #ifndef PACKET_DECODER_H_INCLUDED
 #define PACKET_DECODER_H_INCLUDED
 
+#include <deque>
 #include <string>
 #include <vector>
-#include <deque>
 
 namespace
 {
@@ -25,11 +25,13 @@ enum HDLBlock
 };
 
 #pragma pack(push, 1)
+
 typedef struct HDLLaserReturn
 {
   unsigned short distance;
   unsigned char intensity;
 } HDLLaserReturn;
+
 #pragma pack(pop)
 
 struct HDLFiringData
@@ -67,10 +69,10 @@ struct HDLRGB
   uint8_t b;
 };
 
-double *cos_lookup_table_;
-double *sin_lookup_table_;
+double* cos_lookup_table_;
+double* sin_lookup_table_;
 HDLLaserCorrection laser_corrections_[HDL_MAX_NUM_LASERS];
-}
+}  // namespace
 
 class PacketDecoder
 {
@@ -103,9 +105,10 @@ protected:
   void LoadCorrectionsFile(const std::string& correctionsFile);
   void LoadHDL32Corrections();
   void SetCorrectionsCommon();
-  void ProcessHDLPacket(unsigned char *data, unsigned int data_length);
+  void ProcessHDLPacket(unsigned char* data, unsigned int data_length);
   void SplitFrame();
-  void PushFiringData(unsigned char laserId, unsigned short azimuth, unsigned int timestamp, HDLLaserReturn laserReturn, HDLLaserCorrection correction);
+  void PushFiringData(unsigned char laserId, unsigned short azimuth, unsigned int timestamp, HDLLaserReturn laserReturn,
+                      HDLLaserCorrection correction);
 
 private:
   std::string _corrections_file;
@@ -115,4 +118,4 @@ private:
   std::deque<HDLFrame> _frames;
 };
 
-#endif // PACKET_DECODER_H_INCLUDED
+#endif  // PACKET_DECODER_H_INCLUDED

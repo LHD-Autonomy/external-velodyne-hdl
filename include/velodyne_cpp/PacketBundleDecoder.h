@@ -5,9 +5,10 @@
 #ifndef PACKET_BUNDLE_DECODER_H_INCLUDED
 #define PACKET_BUNDLE_DECODER_H_INCLUDED
 
+#include <deque>
 #include <string>
 #include <vector>
-#include <deque>
+
 #include "PacketDecoder.h"
 
 class PacketBundleDecoder
@@ -41,8 +42,9 @@ protected:
   void LoadCorrectionsFile(const std::string& correctionsFile);
   void LoadHDL32Corrections();
   void SetCorrectionsCommon();
-  void ProcessHDLPacket(unsigned char *data, unsigned int data_length);
-  void PushFiringData(unsigned char laserId, unsigned short azimuth, unsigned int timestamp, HDLLaserReturn laserReturn, HDLLaserCorrection correction);
+  void ProcessHDLPacket(unsigned char* data, unsigned int data_length);
+  void PushFiringData(unsigned char laserId, unsigned short azimuth, unsigned int timestamp, HDLLaserReturn laserReturn,
+                      HDLLaserCorrection correction);
 
 private:
   std::string _corrections_file;
@@ -51,4 +53,4 @@ private:
   std::deque<HDLFrame> _frames;
 };
 
-#endif // PACKET_BUNDLE_DECODER_H_INCLUDED
+#endif  // PACKET_BUNDLE_DECODER_H_INCLUDED

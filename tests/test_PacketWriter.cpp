@@ -1,9 +1,10 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include "PacketDriver.h"
-#include "PacketFileWriter.h"
 #include <boost/shared_ptr.hpp>
+
+#include "velodyne_cpp/PacketDriver.h"
+#include "velodyne_cpp/PacketFileWriter.h"
 
 using namespace std;
 

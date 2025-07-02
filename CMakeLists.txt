@@ -1,24 +1,26 @@
-cmake_minimum_required(VERSION 2.8.7)
+cmake_minimum_required(VERSION 3.5)
 
 # VelodyneHDL Driver
-project(VelodyneHDL)
+project(lhes_external_velodyne_cpp)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} 
+                    "include"
+)
 
-add_library(PacketDriver SHARED PacketDriver.cpp)
+add_library(PacketDriver SHARED src/PacketDriver.cpp)
 target_link_libraries(PacketDriver
   boost_system
 )
 
-add_library(PacketDecoder SHARED PacketDecoder.cpp)
+add_library(PacketDecoder SHARED src/PacketDecoder.cpp)
 target_link_libraries(PacketDecoder
 )
 
-add_library(PacketBundler SHARED PacketBundler.cpp)
+add_library(PacketBundler SHARED src/PacketBundler.cpp)
 target_link_libraries(PacketBundler
 )
 
-add_library(PacketBundleDecoder SHARED PacketBundleDecoder.cpp)
+add_library(PacketBundleDecoder SHARED src/PacketBundleDecoder.cpp)
 target_link_libraries(PacketBundleDecoder
 )
 
@@ -54,7 +56,7 @@ target_link_libraries(test_PacketBundleDecoder
   PacketBundleDecoder
 )
 
-add_executable(PacketFileSender PacketFileSender.cxx)
+add_executable(PacketFileSender src/PacketFileSender.cxx)
 target_link_libraries(PacketFileSender
   boost_system
   boost_thread

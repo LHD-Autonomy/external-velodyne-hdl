@@ -5,8 +5,9 @@
 #ifndef PACKET_BUNDLER_H_INCLUDED
 #define PACKET_BUNDLER_H_INCLUDED
 
-#include <string>
 #include <deque>
+#include <string>
+
 #include "PacketDecoder.h"
 
 class PacketBundler
@@ -22,7 +23,7 @@ public:
 
 protected:
   void UnloadData();
-  void BundleHDLPacket(unsigned char *data, unsigned int data_length);
+  void BundleHDLPacket(unsigned char* data, unsigned int data_length);
   void SplitBundle();
 
 private:
@@ -32,4 +33,4 @@ private:
   std::deque<std::string> _bundles;
 };
 
-#endif // PACKET_BUNDLER_H_INCLUDED
+#endif  // PACKET_BUNDLER_H_INCLUDED

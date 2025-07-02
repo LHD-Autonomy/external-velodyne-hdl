@@ -19,7 +19,8 @@ public:
   bool GetPacket(std::string* data, unsigned int* data_length);
 
 protected:
-  void GetPacketCallback(const boost::system::error_code& error, std::size_t num_bytes, std::string* data, unsigned int* data_length);
+  void GetPacketCallback(const boost::system::error_code& error, std::size_t num_bytes, std::string* data,
+                         unsigned int* data_length);
 
 private:
   unsigned int _port;
@@ -28,4 +29,4 @@ private:
   boost::shared_ptr<boost::asio::ip::udp::socket> _socket;
 };
 
-#endif // PACKET_DRIVER_H_INCLUDED
+#endif  // PACKET_DRIVER_H_INCLUDED
